@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Neon Reflex
 
-## Getting Started
+## Application Proposal
 
-First, run the development server:
+Neon Reflex is a simple single-page guessing game built with Next.js and TypeScript.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The application displays three squares, with one square randomly selected as the correct choice at the beginning of each game. The player's goal is to guess and select the correct square.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The player can select only one square per game. After a square is selected, the game displays whether the player won or lost and provides an option to restart the game.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Initial Game
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+At the beginning of the game, three purple squares are displayed. One of the three squares is randomly selected as the correct square, but this is hidden from the player.
 
-## Learn More
+The player can click one of the three squares to make a choice.
 
-To learn more about Next.js, take a look at the following resources:
+![Initial game](public/initial-game.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Winning Condition
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If the player selects the correct square, the selected square becomes green and the message "You won!" is displayed.
 
-## Deploy on Vercel
+After the selection, all three squares are disabled so the player cannot make another choice. The "Restart Game" button is also displayed.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Winning result](public/winning-game.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Losing Condition
+
+If the player selects an incorrect square, the selected square becomes red and the message "You lost!" is displayed.
+
+The squares are disabled and the "Restart Game" button is displayed.
+
+![Losing result](public/losing-game.png)
+
+### Restarting the Game
+
+When the player clicks the "Restart Game" button, the game is reset. A new correct square is randomly selected, the previous result is removed, and all three squares become available again.
+
+The player can then make a new choice.
+
+## Components
+
+The application consists of seven components:
+
+- Header – contains the application title and subtitle.
+- Title – displays the main title "Neon Reflex".
+- Subtitle – displays the instruction "Click the correct square".
+- Container – contains the main game logic and manages the game state.
+- Square – represents each of the three selectable squares.
+- Result – displays the winning or losing message.
+- RestartButton – allows the player to restart the game.
+
+## Testing
+
+The application is tested using Jest and React Testing Library.
+
+The project contains a minimum of 20 unit tests. The unit tests check individual components and their behavior, including rendering elements, displaying text, button click events, enabled and disabled states, and the different visual states of the squares.
+
+The unit tests use different React Testing Library queries, including `getByRole`, `getAllByRole`, and `queryByRole`.
+
+The project also contains three integration tests that check how different parts of the application work together and how the game state changes.
+
+The integration tests check:
+
+- Selecting the correct square displays the winning result.
+- Selecting an incorrect square displays the losing result.
+- Restarting the game removes the previous result and enables the squares again.
