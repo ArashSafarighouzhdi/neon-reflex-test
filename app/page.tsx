@@ -1,4 +1,5 @@
 import Header from "@/app/components/Header";
+import Square from "./components/Square";
 
 export default function Home() {
   return (
