@@ -1,4 +1,4 @@
-First of all, I would like to thank Vladislav Maksimov (@Lesstread666) for providing the project and the initial test suite. These tests gave me a great starting point for this assignment.
+First of all, I would like to thank Vladislav [ (@Lesstread666)](https://github.com/Lesstread666) for providing the project and the initial test suite. These tests gave me a great starting point for this assignment.
 
 # Feedback on the tests
 
