@@ -9,3 +9,7 @@ export type SquareProps = {
 export type RestartButtonProps = {
   clickFunction: () => void;
 };
+
+export type ResultProps = {
+  result: string;
+};
