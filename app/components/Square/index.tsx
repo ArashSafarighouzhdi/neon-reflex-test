@@ -11,13 +11,13 @@ const Square = ({
     <button
       onClick={() => clickFunction(id)}
       disabled={gameFinished}
-      className={
+      className={`h-48 w-48 rounded-lg border-2 border-purple-500 ${
         isSelected
           ? isCorrect
             ? "bg-green-500"
             : "bg-red-500"
           : "bg-purple-950"
-      }
+      }`}
     ></button>
   );
 };
