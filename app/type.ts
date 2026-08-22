@@ -5,3 +5,7 @@ export type SquareProps = {
   gameFinished: boolean;
   clickFunction: (id: number) => void;
 };
+
+export type RestartButtonProps = {
+  clickFunction: () => void;
+};
