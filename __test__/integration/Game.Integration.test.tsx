@@ -1,66 +1,66 @@
-import { render, screen, fireEvent } from "@testing-library/react"
-import Container from "@/components/Container"
+import { render, screen, fireEvent } from "@testing-library/react";
+import Container from "@/app/components/Container";
 
 describe("Game integration testing", () => {
-    test("The winning message is displayed when the correct square is clicked", () => {
-        jest.spyOn(Math, "random").mockReturnValue(0)
+  test("The winning message is displayed when the correct square is clicked", () => {
+    jest.spyOn(Math, "random").mockReturnValue(0);
 
-        render(<Container />)
+    render(<Container />);
 
-        const squares = screen.getAllByRole("button")
+    const squares = screen.getAllByRole("button");
 
-        fireEvent.click(squares[0])
+    fireEvent.click(squares[0]);
 
-        const result = screen.getByText(/you won!/i)
+    const result = screen.getByText(/you won!/i);
 
-        expect(result).toBeInTheDocument()
+    expect(result).toBeInTheDocument();
 
-        jest.restoreAllMocks()
-    })
+    jest.restoreAllMocks();
+  });
 
-    test("The losing message is displayed when the incorrect square is clicked", () => {
-        jest.spyOn(Math, "random").mockReturnValue(0)
+  test("The losing message is displayed when the incorrect square is clicked", () => {
+    jest.spyOn(Math, "random").mockReturnValue(0);
 
-        render(<Container />)
+    render(<Container />);
 
-        const squares = screen.getAllByRole("button")
+    const squares = screen.getAllByRole("button");
 
-        fireEvent.click(squares[1])
+    fireEvent.click(squares[1]);
 
-        const result = screen.getByText(/you lost!/i)
+    const result = screen.getByText(/you lost!/i);
 
-        expect(result).toBeInTheDocument()
+    expect(result).toBeInTheDocument();
 
-        jest.restoreAllMocks()
-    })
+    jest.restoreAllMocks();
+  });
 
-    test("Restart button resets the game", () => {
-        jest.spyOn(Math, "random").mockReturnValue(0)
+  test("Restart button resets the game", () => {
+    jest.spyOn(Math, "random").mockReturnValue(0);
 
-        render(<Container />)
+    render(<Container />);
 
-        const squares = screen.getAllByRole("button")
+    const squares = screen.getAllByRole("button");
 
-        fireEvent.click(squares[0])
+    fireEvent.click(squares[0]);
 
-        const result = screen.getByText(/you won!/i)
-        const restart = screen.getByRole("button", {
-            name: /restart game/i,
-        })
+    const result = screen.getByText(/you won!/i);
+    const restart = screen.getByRole("button", {
+      name: /restart game/i,
+    });
 
-        expect(result).toBeInTheDocument()
-        expect(restart).toBeInTheDocument()
+    expect(result).toBeInTheDocument();
+    expect(restart).toBeInTheDocument();
 
-        fireEvent.click(restart)
+    fireEvent.click(restart);
 
-        expect(screen.queryByText(/you won!/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/you won!/i)).not.toBeInTheDocument();
 
-        const resetSquares = screen.getAllByRole("button")
+    const resetSquares = screen.getAllByRole("button");
 
-        resetSquares.forEach((square) => {
-            expect(square).toBeEnabled()
-        })
+    resetSquares.forEach((square) => {
+      expect(square).toBeEnabled();
+    });
 
-        jest.restoreAllMocks()
-    })
-})
+    jest.restoreAllMocks();
+  });
+});
